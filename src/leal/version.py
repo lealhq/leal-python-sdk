@@ -1,3 +1,3 @@
 from importlib import metadata
 
-__version__ = metadata.version("leal")
+__version__ = metadata.version("leal-sdk")

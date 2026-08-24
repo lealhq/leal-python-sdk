@@ -4,11 +4,17 @@ dynamic = ["version"]
 
 [tool.poetry]
 name = "leal"
-version = "0.0.8"
+version = "0.0.9"
 description = ""
 readme = "README.md"
 authors = []
-keywords = []
+keywords = [
+    "leal",
+    "loyalty",
+    "stamp cards",
+    "apple wallet",
+    "google wallet"
+]
 license = "MIT"
 classifiers = [
     "Intended Audience :: Developers",
@@ -34,6 +40,7 @@ packages = [
 ]
 
 [tool.poetry.urls]
+Documentation = 'https://www.getleal.com/developers/python'
 Repository = 'https://github.com/lealhq/leal-python-sdk'
 
 [tool.poetry.dependencies]

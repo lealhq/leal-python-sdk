@@ -3,10 +3,19 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Flealhq%2Fleal-python-sdk)
 [![pypi](https://img.shields.io/pypi/v/leal)](https://pypi.python.org/pypi/leal)
 
-The Leal Python library provides convenient access to the Leal APIs from Python.
+Digital loyalty stamp cards in Apple Wallet and Google Wallet, for local
+businesses. This library covers the whole [Leal](https://www.getleal.com)
+API, so you can enrol customers, add stamps, redeem rewards and read a
+card's wallet links from your own application.
+
+- Guides and a page for every language: [www.getleal.com/developers](https://www.getleal.com/developers)
+- Create an API token: [app.getleal.com/api_tokens](https://app.getleal.com/api_tokens)
+- The OpenAPI description these libraries are built from: [www.getleal.com/openapi.json](https://www.getleal.com/openapi.json)
+
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Installation](#installation)
 - [Reference](#reference)
 - [Usage](#usage)
@@ -19,6 +28,10 @@ The Leal Python library provides convenient access to the Leal APIs from Python.
   - [Timeouts](#timeouts)
   - [Custom Client](#custom-client)
 - [Contributing](#contributing)
+
+## Documentation
+
+API reference documentation is available [here](https://app.getleal.com/docs/api.html).
 
 ## Installation
 
@@ -36,17 +49,16 @@ Instantiate and use the client with the following:
 
 ```python
 from leal import Leal
-from leal.cards import CreateCardsRequestCard
 
 client = Leal(
     token="<token>",
 )
 
-client.cards.create(
+client.customer_cards.stamp(
     account_id=1,
-    card=CreateCardsRequestCard(
-        name="name",
-    ),
+    customer_id=1,
+    id=1,
+    stamps=1,
 )
 ```
 
@@ -69,7 +81,6 @@ The SDK also exports an `async` client so that you can make non-blocking calls t
 
 ```python
 import asyncio
-from leal.cards import CreateCardsRequestCard
 
 from leal import AsyncLeal
 
@@ -79,11 +90,11 @@ client = AsyncLeal(
 
 
 async def main() -> None:
-    await client.cards.create(
+    await client.customer_cards.stamp(
         account_id=1,
-        card=CreateCardsRequestCard(
-            name="name",
-        ),
+        customer_id=1,
+        id=1,
+        stamps=1,
     )
 
 
@@ -99,7 +110,7 @@ will be thrown.
 from leal.core.api_error import ApiError
 
 try:
-    client.cards.create(...)
+    client.customer_cards.stamp(...)
 except ApiError as e:
     print(e.status_code)
     print(e.body)
@@ -116,7 +127,7 @@ The `.with_raw_response` property returns a "raw" client that can be used to acc
 from leal import Leal
 
 client = Leal(...)
-response = client.cards.with_raw_response.create(...)
+response = client.customer_cards.with_raw_response.stamp(...)
 print(response.headers)  # access the response headers
 print(response.status_code)  # access the response status code
 print(response.data)  # access the underlying object
@@ -147,7 +158,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `max_retries` request option to configure this behavior.
 
 ```python
-client.cards.create(..., request_options={
+client.customer_cards.stamp(..., request_options={
     "max_retries": 1
 })
 ```
@@ -162,7 +173,7 @@ from leal import Leal
 client = Leal(..., timeout=20.0)
 
 # Override timeout for a specific method
-client.cards.create(..., request_options={
+client.customer_cards.stamp(..., request_options={
     "timeout": 1
 })
 ```

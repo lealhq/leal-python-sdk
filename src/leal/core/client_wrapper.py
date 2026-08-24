@@ -37,7 +37,7 @@ class BaseClientWrapper:
             "X-Fern-Runtime": f"python/{platform.python_version()}",
             "X-Fern-Platform": f"{platform.system().lower()}/{platform.release()}",
             "X-Fern-SDK-Name": "leal",
-            "X-Fern-SDK-Version": "0.0.7",
+            "X-Fern-SDK-Version": "0.0.8",
             **(self.get_custom_headers() or {}),
         }
         headers["Authorization"] = f"Bearer {self._get_token()}"

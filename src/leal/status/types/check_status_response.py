@@ -5,6 +5,7 @@ import typing
 import pydantic
 from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from .check_status_response_rate_limit import CheckStatusResponseRateLimit
+from .check_status_response_versioning import CheckStatusResponseVersioning
 
 
 class CheckStatusResponse(UniversalBaseModel):
@@ -38,6 +39,8 @@ class CheckStatusResponse(UniversalBaseModel):
     """
     'ok' while the API is serving requests
     """
+
+    versioning: CheckStatusResponseVersioning
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

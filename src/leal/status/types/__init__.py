@@ -8,9 +8,11 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .check_status_response import CheckStatusResponse
     from .check_status_response_rate_limit import CheckStatusResponseRateLimit
+    from .check_status_response_versioning import CheckStatusResponseVersioning
 _dynamic_imports: typing.Dict[str, str] = {
     "CheckStatusResponse": ".check_status_response",
     "CheckStatusResponseRateLimit": ".check_status_response_rate_limit",
+    "CheckStatusResponseVersioning": ".check_status_response_versioning",
 }
 
 
@@ -35,4 +37,4 @@ def __dir__():
     return sorted(lazy_attrs)
 
 
-__all__ = ["CheckStatusResponse", "CheckStatusResponseRateLimit"]
+__all__ = ["CheckStatusResponse", "CheckStatusResponseRateLimit", "CheckStatusResponseVersioning"]

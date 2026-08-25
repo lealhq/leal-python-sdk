@@ -6,11 +6,13 @@ import typing
 from importlib import import_module
 
 if typing.TYPE_CHECKING:
+    from .gone_error import GoneError
     from .not_found_error import NotFoundError
     from .too_many_requests_error import TooManyRequestsError
     from .unauthorized_error import UnauthorizedError
     from .unprocessable_entity_error import UnprocessableEntityError
 _dynamic_imports: typing.Dict[str, str] = {
+    "GoneError": ".gone_error",
     "NotFoundError": ".not_found_error",
     "TooManyRequestsError": ".too_many_requests_error",
     "UnauthorizedError": ".unauthorized_error",
@@ -39,4 +41,4 @@ def __dir__():
     return sorted(lazy_attrs)
 
 
-__all__ = ["NotFoundError", "TooManyRequestsError", "UnauthorizedError", "UnprocessableEntityError"]
+__all__ = ["GoneError", "NotFoundError", "TooManyRequestsError", "UnauthorizedError", "UnprocessableEntityError"]

@@ -7,7 +7,7 @@ from importlib import import_module
 
 if typing.TYPE_CHECKING:
     from .types import Error, ErrorErrors
-    from .errors import NotFoundError, TooManyRequestsError, UnauthorizedError, UnprocessableEntityError
+    from .errors import GoneError, NotFoundError, TooManyRequestsError, UnauthorizedError, UnprocessableEntityError
     from . import cards, customer_cards, customers, locations, posters, rewards, status, stores
     from ._default_clients import DefaultAioHttpClient, DefaultAsyncHttpxClient
     from .cards import (
@@ -60,13 +60,14 @@ if typing.TYPE_CHECKING:
         UpdateRewardsRequestReward,
         UpdateRewardsResponse,
     )
-    from .status import CheckStatusResponse, CheckStatusResponseRateLimit
+    from .status import CheckStatusResponse, CheckStatusResponseRateLimit, CheckStatusResponseVersioning
     from .stores import GetStoresResponse, ListStoresResponseItem, UpdateStoresRequestAccount, UpdateStoresResponse
     from .version import __version__
 _dynamic_imports: typing.Dict[str, str] = {
     "AsyncLeal": ".client",
     "CheckStatusResponse": ".status",
     "CheckStatusResponseRateLimit": ".status",
+    "CheckStatusResponseVersioning": ".status",
     "CreateCardsRequestCard": ".cards",
     "CreateCardsResponse": ".cards",
     "CreateCustomersRequestCustomer": ".customers",
@@ -88,6 +89,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "GetPostersResponse": ".posters",
     "GetRewardsResponse": ".rewards",
     "GetStoresResponse": ".stores",
+    "GoneError": ".errors",
     "Leal": ".client",
     "LealEnvironment": ".environment",
     "ListCardsResponseItem": ".cards",
@@ -154,6 +156,7 @@ __all__ = [
     "AsyncLeal",
     "CheckStatusResponse",
     "CheckStatusResponseRateLimit",
+    "CheckStatusResponseVersioning",
     "CreateCardsRequestCard",
     "CreateCardsResponse",
     "CreateCustomersRequestCustomer",
@@ -175,6 +178,7 @@ __all__ = [
     "GetPostersResponse",
     "GetRewardsResponse",
     "GetStoresResponse",
+    "GoneError",
     "Leal",
     "LealEnvironment",
     "ListCardsResponseItem",

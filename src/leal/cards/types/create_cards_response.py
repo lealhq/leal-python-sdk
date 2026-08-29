@@ -12,6 +12,11 @@ class CreateCardsResponse(UniversalBaseModel):
     ISO 8601 timestamp when the card was archived, or null if active
     """
 
+    auxiliary_fields: typing.List[str] = pydantic.Field()
+    """
+    Up to two extra front-of-pass fields
+    """
+
     card_color: str = pydantic.Field()
     """
     Hex colour for the card background (e.g. '#6B4226')
@@ -25,6 +30,11 @@ class CreateCardsResponse(UniversalBaseModel):
     customer_cards_count: int = pydantic.Field()
     """
     Number of customer card instances issued
+    """
+
+    expires_at: str = pydantic.Field()
+    """
+    ISO 8601 timestamp when the card expires, or null if it does not expire
     """
 
     header_text: str = pydantic.Field()
@@ -50,6 +60,16 @@ class CreateCardsResponse(UniversalBaseModel):
     rewards_count: int = pydantic.Field()
     """
     Number of rewards defined for this card
+    """
+
+    show_member_field: bool = pydantic.Field()
+    """
+    Whether wallet passes show the member name field
+    """
+
+    show_stamps_to_reward_field: bool = pydantic.Field()
+    """
+    Whether wallet passes show the stamps-to-reward field
     """
 
     stamp_background_color: str = pydantic.Field()

@@ -22,6 +22,21 @@ class ListPostersResponseItem(UniversalBaseModel):
     Loyalty card customers are signed up to
     """
 
+    collect_email: bool = pydantic.Field()
+    """
+    Whether the public signup form collects email
+    """
+
+    collect_phone: bool = pydantic.Field()
+    """
+    Whether the public signup form collects phone number
+    """
+
+    contact_collection_mode: str = pydantic.Field()
+    """
+    Which contact fields appear on the public signup form: 'email_and_phone', 'email_only', or 'phone_only'
+    """
+
     created_at: str = pydantic.Field()
     """
     ISO 8601 creation timestamp
@@ -37,6 +52,11 @@ class ListPostersResponseItem(UniversalBaseModel):
     Unique poster ID
     """
 
+    minimum_age: float = pydantic.Field()
+    """
+    Minimum customer age required for signup
+    """
+
     paper_size: str = pydantic.Field()
     """
     Paper size the poster is laid out for
@@ -50,6 +70,21 @@ class ListPostersResponseItem(UniversalBaseModel):
     qr_code_url: str = pydantic.Field()
     """
     URL encoded in the QR code
+    """
+
+    require_birthday: bool = pydantic.Field()
+    """
+    Whether date of birth is required on the public signup form
+    """
+
+    require_email: bool = pydantic.Field()
+    """
+    Whether email is required when it is collected
+    """
+
+    require_phone: bool = pydantic.Field()
+    """
+    Whether phone number is required when it is collected
     """
 
     secondary_color: str = pydantic.Field()

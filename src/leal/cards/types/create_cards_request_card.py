@@ -7,9 +7,19 @@ from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 
 
 class CreateCardsRequestCard(UniversalBaseModel):
+    auxiliary_fields: typing.Optional[typing.List[str]] = pydantic.Field(default=None)
+    """
+    Up to two extra front-of-pass fields. Blank values are ignored.
+    """
+
     card_color: typing.Optional[str] = pydantic.Field(default=None)
     """
     Hex colour for the card background (e.g. '#6B4226')
+    """
+
+    expires_at: typing.Optional[str] = pydantic.Field(default=None)
+    """
+    Card expiry timestamp (ISO 8601)
     """
 
     header_text: typing.Optional[str] = pydantic.Field(default=None)
@@ -25,6 +35,16 @@ class CreateCardsRequestCard(UniversalBaseModel):
     name: str = pydantic.Field()
     """
     Card name (e.g. 'Coffee Loyalty Card')
+    """
+
+    show_member_field: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Whether wallet passes show the member name field
+    """
+
+    show_stamps_to_reward_field: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Whether wallet passes show the stamps-to-reward field
     """
 
     stamp_background_color: typing.Optional[str] = pydantic.Field(default=None)

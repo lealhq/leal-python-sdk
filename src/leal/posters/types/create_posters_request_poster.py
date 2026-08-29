@@ -17,6 +17,16 @@ class CreatePostersRequestPoster(UniversalBaseModel):
     ID of the loyalty card this poster links to
     """
 
+    contact_collection_mode: typing.Optional[str] = pydantic.Field(default=None)
+    """
+    Which contact fields appear on the public signup form
+    """
+
+    minimum_age: typing.Optional[float] = pydantic.Field(default=None)
+    """
+    Minimum customer age required for signup. Requires require_birthday to be true.
+    """
+
     paper_size: typing.Optional[str] = pydantic.Field(default=None)
     """
     Print size – one of: a4, a5, a6, letter
@@ -25,6 +35,21 @@ class CreatePostersRequestPoster(UniversalBaseModel):
     primary_color: typing.Optional[str] = pydantic.Field(default=None)
     """
     Primary brand color as a hex string (e.g. '#FF5733')
+    """
+
+    require_birthday: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Whether date of birth is required on the public signup form
+    """
+
+    require_email: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Whether email is required when it is collected
+    """
+
+    require_phone: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Whether phone number is required when it is collected
     """
 
     secondary_color: typing.Optional[str] = pydantic.Field(default=None)

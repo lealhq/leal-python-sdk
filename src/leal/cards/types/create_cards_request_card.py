@@ -72,6 +72,11 @@ class CreateCardsRequestCard(UniversalBaseModel):
     Hex colour for the strip (used when strip_type is 'color')
     """
 
+    strip_opacity: typing.Optional[float] = pydantic.Field(default=None)
+    """
+    Opacity (0–100) of the strip background over the card colour. Defaults to 100, which renders the colour or image exactly as supplied
+    """
+
     strip_preset: typing.Optional[str] = pydantic.Field(default=None)
     """
     Preset strip image identifier (used when strip_type is 'preset')

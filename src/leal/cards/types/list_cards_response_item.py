@@ -97,6 +97,11 @@ class ListCardsResponseItem(UniversalBaseModel):
     Hex colour for the strip (when strip_type is 'color')
     """
 
+    strip_opacity: float = pydantic.Field()
+    """
+    Opacity (0–100) of the strip background over the card colour, for a colour, an uploaded image or a preset alike. 100 renders the colour or image exactly as supplied; lower values let the card colour show through
+    """
+
     strip_preset: str = pydantic.Field()
     """
     Preset strip image identifier (when strip_type is 'preset')

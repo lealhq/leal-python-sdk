@@ -8,7 +8,7 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .types import Error, ErrorErrors
     from .errors import GoneError, NotFoundError, TooManyRequestsError, UnauthorizedError, UnprocessableEntityError
-    from . import cards, customer_cards, customers, locations, posters, rewards, status, stores
+    from . import cards, customer_cards, customers, locations, posters, rewards, status, stores, webhook_subscriptions
     from ._default_clients import DefaultAioHttpClient, DefaultAsyncHttpxClient
     from .cards import (
         CreateCardsRequestCard,
@@ -63,6 +63,14 @@ if typing.TYPE_CHECKING:
     from .status import CheckStatusResponse, CheckStatusResponseRateLimit, CheckStatusResponseVersioning
     from .stores import GetStoresResponse, ListStoresResponseItem, UpdateStoresRequestAccount, UpdateStoresResponse
     from .version import __version__
+    from .webhook_subscriptions import (
+        GetApiV1AccountsAccountIdWebhookSubscriptionsIdResponse,
+        GetApiV1AccountsAccountIdWebhookSubscriptionsResponseItem,
+        PatchApiV1AccountsAccountIdWebhookSubscriptionsIdResponse,
+        PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretResponse,
+        PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestResponse,
+        PostApiV1AccountsAccountIdWebhookSubscriptionsResponse,
+    )
 _dynamic_imports: typing.Dict[str, str] = {
     "AsyncLeal": ".client",
     "CheckStatusResponse": ".status",
@@ -82,6 +90,8 @@ _dynamic_imports: typing.Dict[str, str] = {
     "DefaultAsyncHttpxClient": "._default_clients",
     "Error": ".types",
     "ErrorErrors": ".types",
+    "GetApiV1AccountsAccountIdWebhookSubscriptionsIdResponse": ".webhook_subscriptions",
+    "GetApiV1AccountsAccountIdWebhookSubscriptionsResponseItem": ".webhook_subscriptions",
     "GetCardsResponse": ".cards",
     "GetCustomerCardsResponse": ".customer_cards",
     "GetCustomersResponse": ".customers",
@@ -101,6 +111,10 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ListRewardsResponseItem": ".rewards",
     "ListStoresResponseItem": ".stores",
     "NotFoundError": ".errors",
+    "PatchApiV1AccountsAccountIdWebhookSubscriptionsIdResponse": ".webhook_subscriptions",
+    "PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretResponse": ".webhook_subscriptions",
+    "PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestResponse": ".webhook_subscriptions",
+    "PostApiV1AccountsAccountIdWebhookSubscriptionsResponse": ".webhook_subscriptions",
     "RedeemCustomerCardsResponse": ".customer_cards",
     "RedeemCustomerCardsResponseRedemption": ".customer_cards",
     "StampCustomerCardsResponse": ".customer_cards",
@@ -128,6 +142,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "rewards": ".rewards",
     "status": ".status",
     "stores": ".stores",
+    "webhook_subscriptions": ".webhook_subscriptions",
 }
 
 
@@ -171,6 +186,8 @@ __all__ = [
     "DefaultAsyncHttpxClient",
     "Error",
     "ErrorErrors",
+    "GetApiV1AccountsAccountIdWebhookSubscriptionsIdResponse",
+    "GetApiV1AccountsAccountIdWebhookSubscriptionsResponseItem",
     "GetCardsResponse",
     "GetCustomerCardsResponse",
     "GetCustomersResponse",
@@ -190,6 +207,10 @@ __all__ = [
     "ListRewardsResponseItem",
     "ListStoresResponseItem",
     "NotFoundError",
+    "PatchApiV1AccountsAccountIdWebhookSubscriptionsIdResponse",
+    "PostApiV1AccountsAccountIdWebhookSubscriptionsIdRotateSecretResponse",
+    "PostApiV1AccountsAccountIdWebhookSubscriptionsIdTestResponse",
+    "PostApiV1AccountsAccountIdWebhookSubscriptionsResponse",
     "RedeemCustomerCardsResponse",
     "RedeemCustomerCardsResponseRedemption",
     "StampCustomerCardsResponse",
@@ -217,4 +238,5 @@ __all__ = [
     "rewards",
     "status",
     "stores",
+    "webhook_subscriptions",
 ]

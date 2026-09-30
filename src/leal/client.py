@@ -18,6 +18,7 @@ if typing.TYPE_CHECKING:
     from .rewards.client import AsyncRewardsClient, RewardsClient
     from .status.client import AsyncStatusClient, StatusClient
     from .stores.client import AsyncStoresClient, StoresClient
+    from .webhook_subscriptions.client import AsyncWebhookSubscriptionsClient, WebhookSubscriptionsClient
 
 
 class Leal:
@@ -111,6 +112,7 @@ class Leal:
         self._locations: typing.Optional[LocationsClient] = None
         self._posters: typing.Optional[PostersClient] = None
         self._rewards: typing.Optional[RewardsClient] = None
+        self._webhook_subscriptions: typing.Optional[WebhookSubscriptionsClient] = None
         self._status: typing.Optional[StatusClient] = None
 
     @property
@@ -168,6 +170,14 @@ class Leal:
 
             self._rewards = RewardsClient(client_wrapper=self._client_wrapper)
         return self._rewards
+
+    @property
+    def webhook_subscriptions(self):
+        if self._webhook_subscriptions is None:
+            from .webhook_subscriptions.client import WebhookSubscriptionsClient  # noqa: E402
+
+            self._webhook_subscriptions = WebhookSubscriptionsClient(client_wrapper=self._client_wrapper)
+        return self._webhook_subscriptions
 
     @property
     def status(self):
@@ -290,6 +300,7 @@ class AsyncLeal:
         self._locations: typing.Optional[AsyncLocationsClient] = None
         self._posters: typing.Optional[AsyncPostersClient] = None
         self._rewards: typing.Optional[AsyncRewardsClient] = None
+        self._webhook_subscriptions: typing.Optional[AsyncWebhookSubscriptionsClient] = None
         self._status: typing.Optional[AsyncStatusClient] = None
 
     @property
@@ -347,6 +358,14 @@ class AsyncLeal:
 
             self._rewards = AsyncRewardsClient(client_wrapper=self._client_wrapper)
         return self._rewards
+
+    @property
+    def webhook_subscriptions(self):
+        if self._webhook_subscriptions is None:
+            from .webhook_subscriptions.client import AsyncWebhookSubscriptionsClient  # noqa: E402
+
+            self._webhook_subscriptions = AsyncWebhookSubscriptionsClient(client_wrapper=self._client_wrapper)
+        return self._webhook_subscriptions
 
     @property
     def status(self):

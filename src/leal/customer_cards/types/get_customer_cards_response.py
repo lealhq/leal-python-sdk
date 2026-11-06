@@ -6,6 +6,7 @@ import pydantic
 import typing_extensions
 from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from ...core.serialization import FieldMetadata
+from .get_customer_cards_response_referred_by import GetCustomerCardsResponseReferredBy
 
 
 class GetCustomerCardsResponse(UniversalBaseModel):
@@ -69,6 +70,17 @@ class GetCustomerCardsResponse(UniversalBaseModel):
     Completion towards the next reward, 0 to 100
     """
 
+    referral_url: str = pydantic.Field()
+    """
+    The customer's invite link while the card has referrals on (null otherwise). Safe to share: it names the customer as referrer and can't be used to stamp or redeem
+    """
+
+    referrals_count: float = pydantic.Field()
+    """
+    Friends this customer has invited who joined, rewarded or not
+    """
+
+    referred_by: GetCustomerCardsResponseReferredBy
     stamps_count: int = pydantic.Field()
     """
     Stamps collected so far
@@ -92,10 +104,13 @@ class GetCustomerCardsResponse(UniversalBaseModel):
     uuid_: typing_extensions.Annotated[
         str,
         FieldMetadata(alias="uuid"),
-        pydantic.Field(alias="uuid", description="Public identifier used in wallet pass URLs"),
+        pydantic.Field(
+            alias="uuid",
+            description="The card code: what the store scanner reads from the wallet pass QR and what staff can type in. Treat it like a membership number; it can be used to stamp and redeem",
+        ),
     ]
     """
-    Public identifier used in wallet pass URLs
+    The card code: what the store scanner reads from the wallet pass QR and what staff can type in. Treat it like a membership number; it can be used to stamp and redeem
     """
 
     if IS_PYDANTIC_V2:

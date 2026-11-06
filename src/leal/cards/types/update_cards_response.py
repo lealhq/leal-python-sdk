@@ -57,6 +57,26 @@ class UpdateCardsResponse(UniversalBaseModel):
     Card name (e.g. 'Coffee Loyalty Card')
     """
 
+    qr_style: str = pydantic.Field()
+    """
+    What the wallet pass QR holds: 'link' (the customer's invite link with the card code after the #, readable by the Leal scanner and by `search`) or 'code' (the bare card code). Cards created before referrals use 'code'
+    """
+
+    referee_stamps: float = pydantic.Field()
+    """
+    Stamps the invited friend gets when the referral pays out
+    """
+
+    referrals_enabled: bool = pydantic.Field()
+    """
+    Whether customers can invite friends from the back of their pass. A referral pays out when the store first stamps the friend's card for a visit (a scan, or the API/POS), never for signing up
+    """
+
+    referrer_stamps: float = pydantic.Field()
+    """
+    Stamps the inviting customer gets when the referral pays out
+    """
+
     rewards_count: int = pydantic.Field()
     """
     Number of rewards defined for this card

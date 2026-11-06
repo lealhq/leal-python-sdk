@@ -8,18 +8,22 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .types import (
         CreateCardsRequestCard,
+        CreateCardsRequestCardQrStyle,
         CreateCardsResponse,
         GetCardsResponse,
         ListCardsResponseItem,
         UpdateCardsRequestCard,
+        UpdateCardsRequestCardQrStyle,
         UpdateCardsResponse,
     )
 _dynamic_imports: typing.Dict[str, str] = {
     "CreateCardsRequestCard": ".types",
+    "CreateCardsRequestCardQrStyle": ".types",
     "CreateCardsResponse": ".types",
     "GetCardsResponse": ".types",
     "ListCardsResponseItem": ".types",
     "UpdateCardsRequestCard": ".types",
+    "UpdateCardsRequestCardQrStyle": ".types",
     "UpdateCardsResponse": ".types",
 }
 
@@ -47,9 +51,11 @@ def __dir__():
 
 __all__ = [
     "CreateCardsRequestCard",
+    "CreateCardsRequestCardQrStyle",
     "CreateCardsResponse",
     "GetCardsResponse",
     "ListCardsResponseItem",
     "UpdateCardsRequestCard",
+    "UpdateCardsRequestCardQrStyle",
     "UpdateCardsResponse",
 ]

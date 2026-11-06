@@ -46,7 +46,9 @@ class RawCustomersClient:
     ) -> HttpResponse[ListCustomersResponse]:
         """
         Returns a paginated list of customers for the store. Use the `search` parameter to filter
-        by name, email, phone, card code (barcode), or external reference ID. Alternatively, pass
+        by name, email, phone, card code (barcode), or external reference ID. A scanned wallet pass
+        QR can be passed as it is: newer passes hold a link with the card code after the `#`, and
+        that is matched to the card exactly. Alternatively, pass
         `source` AND `external_id` together to perform an exact lookup by an external reference -
         the response will contain at most one customer.
 
@@ -56,7 +58,7 @@ class RawCustomersClient:
             Store (account) ID
 
         search : typing.Optional[str]
-            Search query to filter customers by name, email, phone, card code (barcode), or external reference ID
+            Search query to filter customers by name, email, phone, card code (barcode, or the full scanned QR text), or external reference ID
 
         source : typing.Optional[str]
             External system slug (e.g. `square`, `shopify`). When combined with `external_id`, performs an exact lookup.
@@ -159,6 +161,7 @@ class RawCustomersClient:
         *,
         customer: CreateCustomersRequestCustomer,
         card_id: typing.Optional[int] = OMIT,
+        referral_code: typing.Optional[str] = OMIT,
         send_card_links: typing.Optional[bool] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[CreateCustomersResponse]:
@@ -182,6 +185,9 @@ class RawCustomersClient:
         card_id : typing.Optional[int]
             Loyalty card ID to auto-enroll the customer in
 
+        referral_code : typing.Optional[str]
+            Records the new customer as invited by another customer: the code is the last part of that customer's `referral_url`. Needs `card_id`, for the same card, with referrals on. Nothing is given now; both customers get their stamps when the new customer's card is first stamped for a visit
+
         send_card_links : typing.Optional[bool]
             When true, sends the card links to the customer via email/SMS after enrollment. Note: even without this flag, the response includes `apple_wallet_url` and `google_wallet_url` in each customer card object so you can deliver them yourself.
 
@@ -201,6 +207,7 @@ class RawCustomersClient:
                 "customer": convert_and_respect_annotation_metadata(
                     object_=customer, annotation=CreateCustomersRequestCustomer, direction="write"
                 ),
+                "referral_code": referral_code,
                 "send_card_links": send_card_links,
             },
             headers={
@@ -516,7 +523,9 @@ class AsyncRawCustomersClient:
     ) -> AsyncHttpResponse[ListCustomersResponse]:
         """
         Returns a paginated list of customers for the store. Use the `search` parameter to filter
-        by name, email, phone, card code (barcode), or external reference ID. Alternatively, pass
+        by name, email, phone, card code (barcode), or external reference ID. A scanned wallet pass
+        QR can be passed as it is: newer passes hold a link with the card code after the `#`, and
+        that is matched to the card exactly. Alternatively, pass
         `source` AND `external_id` together to perform an exact lookup by an external reference -
         the response will contain at most one customer.
 
@@ -526,7 +535,7 @@ class AsyncRawCustomersClient:
             Store (account) ID
 
         search : typing.Optional[str]
-            Search query to filter customers by name, email, phone, card code (barcode), or external reference ID
+            Search query to filter customers by name, email, phone, card code (barcode, or the full scanned QR text), or external reference ID
 
         source : typing.Optional[str]
             External system slug (e.g. `square`, `shopify`). When combined with `external_id`, performs an exact lookup.
@@ -629,6 +638,7 @@ class AsyncRawCustomersClient:
         *,
         customer: CreateCustomersRequestCustomer,
         card_id: typing.Optional[int] = OMIT,
+        referral_code: typing.Optional[str] = OMIT,
         send_card_links: typing.Optional[bool] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[CreateCustomersResponse]:
@@ -652,6 +662,9 @@ class AsyncRawCustomersClient:
         card_id : typing.Optional[int]
             Loyalty card ID to auto-enroll the customer in
 
+        referral_code : typing.Optional[str]
+            Records the new customer as invited by another customer: the code is the last part of that customer's `referral_url`. Needs `card_id`, for the same card, with referrals on. Nothing is given now; both customers get their stamps when the new customer's card is first stamped for a visit
+
         send_card_links : typing.Optional[bool]
             When true, sends the card links to the customer via email/SMS after enrollment. Note: even without this flag, the response includes `apple_wallet_url` and `google_wallet_url` in each customer card object so you can deliver them yourself.
 
@@ -671,6 +684,7 @@ class AsyncRawCustomersClient:
                 "customer": convert_and_respect_annotation_metadata(
                     object_=customer, annotation=CreateCustomersRequestCustomer, direction="write"
                 ),
+                "referral_code": referral_code,
                 "send_card_links": send_card_links,
             },
             headers={

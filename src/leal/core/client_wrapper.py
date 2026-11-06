@@ -33,12 +33,12 @@ class BaseClientWrapper:
         import platform
 
         headers: typing.Dict[str, str] = {
-            "User-Agent": "leal-sdk/0.0.16",
+            "User-Agent": "leal-sdk/0.0.17",
             "X-Fern-Language": "Python",
             "X-Fern-Runtime": f"python/{platform.python_version()}",
             "X-Fern-Platform": f"{platform.system().lower()}/{platform.release()}",
             "X-Fern-SDK-Name": "leal-sdk",
-            "X-Fern-SDK-Version": "0.0.16",
+            "X-Fern-SDK-Version": "0.0.17",
             **(self.get_custom_headers() or {}),
         }
         headers["Authorization"] = f"Bearer {self._get_token()}"

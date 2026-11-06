@@ -7,17 +7,21 @@ from importlib import import_module
 
 if typing.TYPE_CHECKING:
     from .create_cards_request_card import CreateCardsRequestCard
+    from .create_cards_request_card_qr_style import CreateCardsRequestCardQrStyle
     from .create_cards_response import CreateCardsResponse
     from .get_cards_response import GetCardsResponse
     from .list_cards_response_item import ListCardsResponseItem
     from .update_cards_request_card import UpdateCardsRequestCard
+    from .update_cards_request_card_qr_style import UpdateCardsRequestCardQrStyle
     from .update_cards_response import UpdateCardsResponse
 _dynamic_imports: typing.Dict[str, str] = {
     "CreateCardsRequestCard": ".create_cards_request_card",
+    "CreateCardsRequestCardQrStyle": ".create_cards_request_card_qr_style",
     "CreateCardsResponse": ".create_cards_response",
     "GetCardsResponse": ".get_cards_response",
     "ListCardsResponseItem": ".list_cards_response_item",
     "UpdateCardsRequestCard": ".update_cards_request_card",
+    "UpdateCardsRequestCardQrStyle": ".update_cards_request_card_qr_style",
     "UpdateCardsResponse": ".update_cards_response",
 }
 
@@ -45,9 +49,11 @@ def __dir__():
 
 __all__ = [
     "CreateCardsRequestCard",
+    "CreateCardsRequestCardQrStyle",
     "CreateCardsResponse",
     "GetCardsResponse",
     "ListCardsResponseItem",
     "UpdateCardsRequestCard",
+    "UpdateCardsRequestCardQrStyle",
     "UpdateCardsResponse",
 ]

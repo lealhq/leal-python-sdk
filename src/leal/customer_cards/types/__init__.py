@@ -7,16 +7,20 @@ from importlib import import_module
 
 if typing.TYPE_CHECKING:
     from .get_customer_cards_response import GetCustomerCardsResponse
+    from .get_customer_cards_response_referred_by import GetCustomerCardsResponseReferredBy
     from .list_customer_cards_response_item import ListCustomerCardsResponseItem
     from .redeem_customer_cards_response import RedeemCustomerCardsResponse
     from .redeem_customer_cards_response_redemption import RedeemCustomerCardsResponseRedemption
     from .stamp_customer_cards_response import StampCustomerCardsResponse
+    from .stamp_customer_cards_response_referred_by import StampCustomerCardsResponseReferredBy
 _dynamic_imports: typing.Dict[str, str] = {
     "GetCustomerCardsResponse": ".get_customer_cards_response",
+    "GetCustomerCardsResponseReferredBy": ".get_customer_cards_response_referred_by",
     "ListCustomerCardsResponseItem": ".list_customer_cards_response_item",
     "RedeemCustomerCardsResponse": ".redeem_customer_cards_response",
     "RedeemCustomerCardsResponseRedemption": ".redeem_customer_cards_response_redemption",
     "StampCustomerCardsResponse": ".stamp_customer_cards_response",
+    "StampCustomerCardsResponseReferredBy": ".stamp_customer_cards_response_referred_by",
 }
 
 
@@ -43,8 +47,10 @@ def __dir__():
 
 __all__ = [
     "GetCustomerCardsResponse",
+    "GetCustomerCardsResponseReferredBy",
     "ListCustomerCardsResponseItem",
     "RedeemCustomerCardsResponse",
     "RedeemCustomerCardsResponseRedemption",
     "StampCustomerCardsResponse",
+    "StampCustomerCardsResponseReferredBy",
 ]

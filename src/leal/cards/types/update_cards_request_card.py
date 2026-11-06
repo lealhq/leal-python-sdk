@@ -4,6 +4,7 @@ import typing
 
 import pydantic
 from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
+from .update_cards_request_card_qr_style import UpdateCardsRequestCardQrStyle
 
 
 class UpdateCardsRequestCard(UniversalBaseModel):
@@ -35,6 +36,26 @@ class UpdateCardsRequestCard(UniversalBaseModel):
     name: typing.Optional[str] = pydantic.Field(default=None)
     """
     Card name
+    """
+
+    qr_style: typing.Optional[UpdateCardsRequestCardQrStyle] = pydantic.Field(default=None)
+    """
+    What the wallet pass QR holds. Changing it refreshes installed passes; passes still showing the old QR keep scanning
+    """
+
+    referee_stamps: typing.Optional[float] = pydantic.Field(default=None)
+    """
+    Stamps the invited friend gets (>= 0 and < stamps_required)
+    """
+
+    referrals_enabled: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Let customers invite friends from the back of their pass. Installed passes are refreshed, as for any card change
+    """
+
+    referrer_stamps: typing.Optional[float] = pydantic.Field(default=None)
+    """
+    Stamps the inviting customer gets (>= 0 and < stamps_required)
     """
 
     show_member_field: typing.Optional[bool] = pydantic.Field(default=None)

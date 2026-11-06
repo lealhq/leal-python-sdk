@@ -4,6 +4,7 @@ import typing
 
 import pydantic
 from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
+from .create_cards_request_card_qr_style import CreateCardsRequestCardQrStyle
 
 
 class CreateCardsRequestCard(UniversalBaseModel):
@@ -35,6 +36,26 @@ class CreateCardsRequestCard(UniversalBaseModel):
     name: str = pydantic.Field()
     """
     Card name (e.g. 'Coffee Loyalty Card')
+    """
+
+    qr_style: typing.Optional[CreateCardsRequestCardQrStyle] = pydantic.Field(default=None)
+    """
+    What the wallet pass QR holds. Defaults to 'link' for new cards
+    """
+
+    referee_stamps: typing.Optional[float] = pydantic.Field(default=None)
+    """
+    Stamps the invited friend gets on their first stamped visit (>= 0 and < stamps_required, default 1)
+    """
+
+    referrals_enabled: typing.Optional[bool] = pydantic.Field(default=None)
+    """
+    Let customers invite friends from the back of their pass (default false)
+    """
+
+    referrer_stamps: typing.Optional[float] = pydantic.Field(default=None)
+    """
+    Stamps the inviting customer gets when the friend's first visit is stamped (>= 0 and < stamps_required, default 1)
     """
 
     show_member_field: typing.Optional[bool] = pydantic.Field(default=None)

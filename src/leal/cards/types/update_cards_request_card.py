@@ -4,10 +4,17 @@ import typing
 
 import pydantic
 from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
+from .update_cards_request_card_apple_pass_style import UpdateCardsRequestCardApplePassStyle
+from .update_cards_request_card_google_logo_style import UpdateCardsRequestCardGoogleLogoStyle
 from .update_cards_request_card_qr_style import UpdateCardsRequestCardQrStyle
 
 
 class UpdateCardsRequestCard(UniversalBaseModel):
+    apple_pass_style: typing.Optional[UpdateCardsRequestCardApplePassStyle] = pydantic.Field(default=None)
+    """
+    Apple Wallet layout. 'poster' is iOS 27's full-bleed layout; older iPhones show the store card. Defaults to 'store_card'
+    """
+
     auxiliary_fields: typing.Optional[typing.List[str]] = pydantic.Field(default=None)
     """
     Up to two extra front-of-pass fields. Blank values are ignored.
@@ -21,6 +28,16 @@ class UpdateCardsRequestCard(UniversalBaseModel):
     expires_at: typing.Optional[str] = pydantic.Field(default=None)
     """
     Card expiry timestamp (ISO 8601)
+    """
+
+    featured_actions: typing.Optional[typing.List[str]] = pydantic.Field(default=None)
+    """
+    Up to two buttons, shown as Featured Actions under the iOS 27 poster and as links in Google Wallet. Send an empty array to remove them.
+    """
+
+    google_logo_style: typing.Optional[UpdateCardsRequestCardGoogleLogoStyle] = pydantic.Field(default=None)
+    """
+    How the logo sits on Google Wallet. Defaults to 'round'
     """
 
     header_text: typing.Optional[str] = pydantic.Field(default=None)

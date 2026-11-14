@@ -4,9 +4,15 @@ import typing
 
 import pydantic
 from ...core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
+from .list_cards_response_item_google_wallet import ListCardsResponseItemGoogleWallet
 
 
 class ListCardsResponseItem(UniversalBaseModel):
+    apple_pass_style: str = pydantic.Field()
+    """
+    Apple Wallet layout: 'store_card' (the classic layout) or 'poster' (iOS 27 full-bleed artwork; iPhones on iOS 26 or earlier show the store card)
+    """
+
     archived_at: str = pydantic.Field()
     """
     ISO 8601 timestamp when the card was archived, or null if active
@@ -37,6 +43,17 @@ class ListCardsResponseItem(UniversalBaseModel):
     ISO 8601 timestamp when the card expires, or null if it does not expire
     """
 
+    featured_actions: typing.List[str] = pydantic.Field()
+    """
+    Up to two buttons: Featured Actions under the iOS 27 poster, and links under the pass in Google Wallet
+    """
+
+    google_logo_style: str = pydantic.Field()
+    """
+    How the logo sits on Google Wallet: 'round' (the square icon in a circle, with the store name) or 'wide' (the logo in place of the circle and store name)
+    """
+
+    google_wallet: ListCardsResponseItemGoogleWallet
     header_text: str = pydantic.Field()
     """
     Optional header text displayed on the card

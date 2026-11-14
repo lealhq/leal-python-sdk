@@ -8,23 +8,39 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .types import (
         CreateCardsRequestCard,
+        CreateCardsRequestCardApplePassStyle,
+        CreateCardsRequestCardGoogleLogoStyle,
         CreateCardsRequestCardQrStyle,
         CreateCardsResponse,
+        CreateCardsResponseGoogleWallet,
         GetCardsResponse,
+        GetCardsResponseGoogleWallet,
         ListCardsResponseItem,
+        ListCardsResponseItemGoogleWallet,
         UpdateCardsRequestCard,
+        UpdateCardsRequestCardApplePassStyle,
+        UpdateCardsRequestCardGoogleLogoStyle,
         UpdateCardsRequestCardQrStyle,
         UpdateCardsResponse,
+        UpdateCardsResponseGoogleWallet,
     )
 _dynamic_imports: typing.Dict[str, str] = {
     "CreateCardsRequestCard": ".types",
+    "CreateCardsRequestCardApplePassStyle": ".types",
+    "CreateCardsRequestCardGoogleLogoStyle": ".types",
     "CreateCardsRequestCardQrStyle": ".types",
     "CreateCardsResponse": ".types",
+    "CreateCardsResponseGoogleWallet": ".types",
     "GetCardsResponse": ".types",
+    "GetCardsResponseGoogleWallet": ".types",
     "ListCardsResponseItem": ".types",
+    "ListCardsResponseItemGoogleWallet": ".types",
     "UpdateCardsRequestCard": ".types",
+    "UpdateCardsRequestCardApplePassStyle": ".types",
+    "UpdateCardsRequestCardGoogleLogoStyle": ".types",
     "UpdateCardsRequestCardQrStyle": ".types",
     "UpdateCardsResponse": ".types",
+    "UpdateCardsResponseGoogleWallet": ".types",
 }
 
 
@@ -51,11 +67,19 @@ def __dir__():
 
 __all__ = [
     "CreateCardsRequestCard",
+    "CreateCardsRequestCardApplePassStyle",
+    "CreateCardsRequestCardGoogleLogoStyle",
     "CreateCardsRequestCardQrStyle",
     "CreateCardsResponse",
+    "CreateCardsResponseGoogleWallet",
     "GetCardsResponse",
+    "GetCardsResponseGoogleWallet",
     "ListCardsResponseItem",
+    "ListCardsResponseItemGoogleWallet",
     "UpdateCardsRequestCard",
+    "UpdateCardsRequestCardApplePassStyle",
+    "UpdateCardsRequestCardGoogleLogoStyle",
     "UpdateCardsRequestCardQrStyle",
     "UpdateCardsResponse",
+    "UpdateCardsResponseGoogleWallet",
 ]

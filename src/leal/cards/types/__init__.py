@@ -7,22 +7,38 @@ from importlib import import_module
 
 if typing.TYPE_CHECKING:
     from .create_cards_request_card import CreateCardsRequestCard
+    from .create_cards_request_card_apple_pass_style import CreateCardsRequestCardApplePassStyle
+    from .create_cards_request_card_google_logo_style import CreateCardsRequestCardGoogleLogoStyle
     from .create_cards_request_card_qr_style import CreateCardsRequestCardQrStyle
     from .create_cards_response import CreateCardsResponse
+    from .create_cards_response_google_wallet import CreateCardsResponseGoogleWallet
     from .get_cards_response import GetCardsResponse
+    from .get_cards_response_google_wallet import GetCardsResponseGoogleWallet
     from .list_cards_response_item import ListCardsResponseItem
+    from .list_cards_response_item_google_wallet import ListCardsResponseItemGoogleWallet
     from .update_cards_request_card import UpdateCardsRequestCard
+    from .update_cards_request_card_apple_pass_style import UpdateCardsRequestCardApplePassStyle
+    from .update_cards_request_card_google_logo_style import UpdateCardsRequestCardGoogleLogoStyle
     from .update_cards_request_card_qr_style import UpdateCardsRequestCardQrStyle
     from .update_cards_response import UpdateCardsResponse
+    from .update_cards_response_google_wallet import UpdateCardsResponseGoogleWallet
 _dynamic_imports: typing.Dict[str, str] = {
     "CreateCardsRequestCard": ".create_cards_request_card",
+    "CreateCardsRequestCardApplePassStyle": ".create_cards_request_card_apple_pass_style",
+    "CreateCardsRequestCardGoogleLogoStyle": ".create_cards_request_card_google_logo_style",
     "CreateCardsRequestCardQrStyle": ".create_cards_request_card_qr_style",
     "CreateCardsResponse": ".create_cards_response",
+    "CreateCardsResponseGoogleWallet": ".create_cards_response_google_wallet",
     "GetCardsResponse": ".get_cards_response",
+    "GetCardsResponseGoogleWallet": ".get_cards_response_google_wallet",
     "ListCardsResponseItem": ".list_cards_response_item",
+    "ListCardsResponseItemGoogleWallet": ".list_cards_response_item_google_wallet",
     "UpdateCardsRequestCard": ".update_cards_request_card",
+    "UpdateCardsRequestCardApplePassStyle": ".update_cards_request_card_apple_pass_style",
+    "UpdateCardsRequestCardGoogleLogoStyle": ".update_cards_request_card_google_logo_style",
     "UpdateCardsRequestCardQrStyle": ".update_cards_request_card_qr_style",
     "UpdateCardsResponse": ".update_cards_response",
+    "UpdateCardsResponseGoogleWallet": ".update_cards_response_google_wallet",
 }
 
 
@@ -49,11 +65,19 @@ def __dir__():
 
 __all__ = [
     "CreateCardsRequestCard",
+    "CreateCardsRequestCardApplePassStyle",
+    "CreateCardsRequestCardGoogleLogoStyle",
     "CreateCardsRequestCardQrStyle",
     "CreateCardsResponse",
+    "CreateCardsResponseGoogleWallet",
     "GetCardsResponse",
+    "GetCardsResponseGoogleWallet",
     "ListCardsResponseItem",
+    "ListCardsResponseItemGoogleWallet",
     "UpdateCardsRequestCard",
+    "UpdateCardsRequestCardApplePassStyle",
+    "UpdateCardsRequestCardGoogleLogoStyle",
     "UpdateCardsRequestCardQrStyle",
     "UpdateCardsResponse",
+    "UpdateCardsResponseGoogleWallet",
 ]
